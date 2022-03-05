@@ -1,4 +1,4 @@
-# web-musci
+# super-mall
 
 ## Project setup
 ```
