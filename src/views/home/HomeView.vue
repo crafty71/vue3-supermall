@@ -16,6 +16,22 @@
       class="home-tab-control"
     />
     <GoodsList :goods="goods[curType].list" @scroll="scroll" />
+    <el-backtop :bottom="100">
+    <div
+      style="
+        height: 100%;
+        width: 100%;
+        background-color: #f2f5f6;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
+        text-align: center;
+        line-height: 40px;
+        color: #1989fa;
+        border-radius: 50%;
+      "
+    >
+      UP
+    </div>
+  </el-backtop>
   </div>
 </template>
 

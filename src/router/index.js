@@ -39,7 +39,7 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: () =>
-      import(/* webpackChunkName: "profile" */ '../views/profie/ProfieIndex.vue')
+      import(/* webpackChunkName: "profile" */ '../views/profile/ProfineList.vue')
   }
 ]
 

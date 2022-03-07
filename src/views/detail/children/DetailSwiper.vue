@@ -1,6 +1,6 @@
 <template>
   <div class="block">
-    <el-carousel height="500px">
+    <el-carousel height="1600px">
       <el-carousel-item v-for="item in banners" :key="item" trigger="click">
         <h3 class="small"><img :src="item" alt=""  class="image"/></h3>
       </el-carousel-item>
@@ -28,7 +28,7 @@ defineProps({
   img {
     display: inline-block;
     width: 100%;
-    height: 500px;
+    height: 1600px;
   }
 }
 </style>

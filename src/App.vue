@@ -1,26 +1,25 @@
 <template>
-  <!-- <router-view />
-  <TabBar/> -->
   <div class="shop-container">
-    <router-view >
-    </router-view>
-    <!-- 控制tabBar显示和隐藏 -->
-    <div class="nav-bar"><TabBar/></div>
+    <router-view> </router-view>
   </div>
+  <MainTabBar v-show="store.getters.tabBarShow"/>
 </template>
 
 <script setup>
-import TabBar from '@/components/tabbar/TabBar.vue'
+import MainTabBar from '@/components/maintabbar/MainTabBar.vue'
+import { useStore } from 'vuex'
+
+const store = useStore()
+
 </script>
 
 <style lang="less" scoped>
-
 shop-container {
   height: 80%;
 }
 .nav-bar {
   position: sticky;
-  bottom: 0px;
+  top: 10px;
   z-index: 100;
 }
 </style>

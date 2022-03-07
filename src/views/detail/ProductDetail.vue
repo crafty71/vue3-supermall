@@ -1,5 +1,5 @@
 <template>
-  <Loading v-if="loading"/>
+  <Loading v-if="loading" />
   <div v-else>
     <ProductDetailNavBar />
     <DetailSwiper :banners="topImages" />
@@ -17,8 +17,25 @@
         class="detail-set-scroll"
         @itemclick="itemclick"
       />
+      <DetailBottomBar @addCrat = "addCrat"/>
     </div>
   </div>
+  <el-backtop :bottom="100">
+    <div
+      style="
+        height: 100%;
+        width: 100%;
+        background-color: #f2f5f6;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
+        text-align: center;
+        line-height: 40px;
+        color: #1989fa;
+        border-radius: 50%;
+      "
+    >
+      UP
+    </div>
+  </el-backtop>
 </template>
 
 <script setup>
@@ -31,6 +48,7 @@ import DetailParamInfo from './children/DetailParamInfo'
 import DetailCommentInfo from './children/DetailCommentInfo'
 import GoodsList from './children/GoodsList.vue'
 import Loading from '@/components/Loading/index.vue'
+import DetailBottomBar from './children/DetailBottomBar.vue'
 
 // api
 import {
@@ -42,6 +60,8 @@ import {
 } from './api/api'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
+// import { SET_TABBAR_SHOW } from '@/store/types'
 
 // 请求详情数据
 const id = ref()
@@ -54,6 +74,7 @@ const detailsInfo = ref()
 const paramsInfo = ref()
 const commentInfo = ref()
 const loading = ref(true)
+const store = useStore()
 async function getProductDetailData (id) {
   const res = await getProductDetail(id.value)
   const data = res.result
@@ -63,7 +84,7 @@ async function getProductDetailData (id) {
 
   // 获取商品数据,调用封装的ES6的class
   goods.value = new Goods(data.itemInfo, data.columns, data.shopInfo.services)
-
+  console.log(new Goods(data.itemInfo, data.columns, data.shopInfo.services))
   // 获取店铺数据
   shops.value = new Shop(data.shopInfo)
   console.log(new Shop(data.shopInfo))
@@ -96,10 +117,32 @@ const itemclick = (id) => {
   const iid = ref(id)
   getProductDetailData(iid)
 }
+
+const addCrat = (aaa) => {
+  console.log(aaa)
+  // 获取购物车需要展示的信息，对象的形式
+  const product = {}
+  console.log(goods.value)
+  product.image = topImages.value[0]
+  product.title = goods.value.title
+  product.desc = goods.value.desc
+  product.price = goods.value.nowPrice
+  product.iid = id.value
+  product.newPrice = goods.value.nowPrice
+  // 将商品添加购物车里 vuex
+  store.dispatch('addCart', product).then(res => {
+    console.log(res)
+  })
+}
 onMounted(() => {
   getProductDetailData(id)
   getRecommendData()
   loading.value = false
+  document.body.scrollTop = 0
+  console.log(store)
+  store.commit('setTabBarShow', {
+    bol: false
+  })
 })
 </script>
 

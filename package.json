@@ -10,6 +10,7 @@
     "start": "npm run serve"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^1.1.0",
     "amfe-flexible": "^2.2.1",
     "axios": "^0.26.0",
     "core-js": "^3.8.3",

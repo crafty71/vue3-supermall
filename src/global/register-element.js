@@ -12,7 +12,9 @@ import {
   ElCarouselItem,
   ElScrollbar,
   ElCol,
-  ElRow
+  ElRow,
+  ElBacktop,
+  ElAffix
 } from 'element-plus'
 
 const components = [
@@ -28,7 +30,9 @@ const components = [
   ElCarouselItem,
   ElScrollbar,
   ElCol,
-  ElRow
+  ElRow,
+  ElBacktop,
+  ElAffix
 ]
 
 export default function (app) {
