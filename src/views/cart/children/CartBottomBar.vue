@@ -57,38 +57,6 @@ const selectAllClick = () => {
   }
 }
 
-// 按钮提交
-// onSubmit() {
-//   if (this.checkedLength === 0) {
-//     this.$toast({
-//       type: "fail",
-//       message: `您还没有选中商品哦`,
-//       forbidClick: true,
-//       duration: 1500
-//     });
-//   } else {
-//     this.$dialog
-//       .confirm({
-//         title: "温馨提示",
-//         message: "您确定要提交订单吗?"
-//       })
-//       .then(() => {
-//         this.$toast({
-//           type: "success",
-//           message: `提交 ${this.checkedLength} 条数据成功`,
-//           forbidClick: true,
-//           duration: 1500
-//         });
-//         // 提交数据清空对应购物车数据
-//         setTimeout(() => {
-//           this.clearCartList();
-//           this.checkedAll = false;
-//         }, 1500);
-//       })
-//       .catch(err => err);
-//   }
-// }
-
 const onSubmit = () => {
   if (isSelectAll.value === false) {
     ElMessageBox.alert('您还没有选中任何商品', '提示', {
@@ -101,7 +69,6 @@ const onSubmit = () => {
       // }
     })
   } else {
-    console.log(123)
     ElMessageBox.alert('您确定要提交订单吗?', '提示', {
       confirmButtonText: '确定',
       callback: (action) => {

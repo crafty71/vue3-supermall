@@ -33,7 +33,6 @@ const slideBarItemClick = (item, index) => {
   }
   currentIndex.value = index
   emit('slideBarItemClick', obj)
-  console.log(obj)
 }
 
 </script>

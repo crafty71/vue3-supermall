@@ -48,7 +48,6 @@ const categoryDetailList = ref()
 // const TabRef = ref(null)
 
 const tabClick = (index) => {
-  console.log(index)
   if (index === 0) {
     curType.value = 'pop'
   } else if (index === 1) {
@@ -63,11 +62,7 @@ const currentInstance = getCurrentInstance()
 async function getCategoryData () {
   const res = await getCategory()
   categoryList.value = res.data.category.list
-  console.log(res)
 }
-// watch(count, (newValue, oldValue) => { //直接监听
-// console.log("count改变了");
-// });
 watch(curType, () => {
   getCategoryDetailData(
     categoryList.value[currentIndex.value].miniWallkey,
@@ -81,7 +76,6 @@ const slideBarItemClick = ({ maitKey, index }) => {
   // 每次切换分类初始化tabControl的下标
   currentInstance.ctx.$refs.TabRef.value = 0
   // 请求对应的推荐列表
-  console.log(categoryList.value[currentIndex.value].miniWallkey)
   getCategoryDetailData(
     categoryList.value[currentIndex.value].miniWallkey,
     curType.value
@@ -91,13 +85,11 @@ const slideBarItemClick = ({ maitKey, index }) => {
 
 async function getSubcategoryData (key) {
   const res = await getSubcategory(key)
-  console.log(res)
   subcategoryList.value = [...res.data.list]
 }
 
 async function getCategoryDetailData (key, type) {
   const res = await getCategoryDetail(key, type)
-  console.log(res)
   categoryDetailList.value = [...res]
 }
 

@@ -1,22 +1,26 @@
 <template>
   <div class="login">
     <div class="user-pic">
-      <!-- <van-image :src="defaultPic" class="user-pic-img" fit="cover" round /> -->
+      <el-avatar :size="50" :src="circleUrl"></el-avatar>
     </div>
     <div class="user-info">
       <p>登录/注册</p>
       <div class="phone-num">
-        <!-- <img alt="" class="icon-phone" src="~assets/img/profile/phone.svg" /> -->
+        <el-icon><iphone /></el-icon>
         <p>暂未绑定手机号</p>
       </div>
     </div>
     <div class="profile-arrow-right">
-      <!-- <img alt="" src="~assets/img/profile/arrow_right.png" /> -->
+      <el-icon><ticket /></el-icon>
     </div>
   </div>
 </template>
 
-<script></script>
+<script setup>
+import { ref } from 'vue'
+
+const circleUrl = ref(require('@/assets/img/profile/OIP-C.jpg'))
+</script>
 
 <style scoped>
 .login {

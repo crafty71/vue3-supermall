@@ -25,7 +25,6 @@ const count = ref(1)
 const emit = defineEmits(['scroll'])
 const load = () => {
   count.value += 1
-  console.log(count.value)
   emit('scroll', count.value)
 }
 defineExpose({ count })

@@ -2,7 +2,7 @@
   <div class="shop-container">
     <router-view> </router-view>
   </div>
-  <MainTabBar v-show="store.getters.tabBarShow"/>
+  <MainTabBar v-show="store.getters.tabBarShow" />
 </template>
 
 <script setup>
@@ -10,12 +10,12 @@ import MainTabBar from '@/components/maintabbar/MainTabBar.vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
-
 </script>
 
 <style lang="less" scoped>
 shop-container {
-  height: 80%;
+  width: 100%;
+  overflow: hidden;
 }
 .nav-bar {
   position: sticky;

@@ -14,7 +14,8 @@ import {
   ElCol,
   ElRow,
   ElBacktop,
-  ElAffix
+  ElAffix,
+  ElAvatar
 } from 'element-plus'
 
 const components = [
@@ -32,7 +33,8 @@ const components = [
   ElCol,
   ElRow,
   ElBacktop,
-  ElAffix
+  ElAffix,
+  ElAvatar
 ]
 
 export default function (app) {

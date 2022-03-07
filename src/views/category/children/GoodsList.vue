@@ -34,7 +34,6 @@ defineProps({
 })
 const router = useRouter()
 const goodItemClick = (item) => {
-  console.log(item)
   router.push(`/detail/${item.iid}`)
   const id = (item.iid)
   emit('itemclick', id)

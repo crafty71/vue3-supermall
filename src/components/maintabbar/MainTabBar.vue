@@ -1,12 +1,6 @@
 <template>
   <tab-bar>
     <tab-bar-item link="/home">
-      <!-- <img src="~assets/img/tabbar/home.svg" alt="" slot="item-icon" />
-      <img
-        src="~assets/img/tabbar/home_active.svg"
-        alt=""
-        slot="item-active-icon"
-      /> -->
       <template v-slot:item-icon>
         <img src="@/assets/img/tabbar/home.svg" alt="" />
       </template>
@@ -53,16 +47,9 @@
   </tab-bar>
 </template>
 
-<script>
+<script setup>
 import TabBar from '@/components/tabbar/TabBar.vue'
 import TabBarItem from '@/components/tabbar/TabBarItem.vue'
-export default {
-  name: 'MainTabBar',
-  components: {
-    TabBar,
-    TabBarItem
-  }
-}
 </script>
 
 <style scoped></style>

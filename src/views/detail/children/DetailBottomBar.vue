@@ -36,7 +36,6 @@ import { defineEmits } from 'vue'
 const emit = defineEmits(['addCrat'])
 
 const addCart = () => {
-  console.log(123)
   emit('addCrat', 1)
 }
 </script>

@@ -53,7 +53,6 @@ const banners = ref()
 const recommends = ref()
 async function getHomeMultiDataList () {
   const res = await getHomeMultiData()
-  console.log(res.data.recommend.list)
   banners.value = res.data.banner.list
   recommends.value = res.data.recommend.list
 }
@@ -67,7 +66,6 @@ const tabControlTitles = ref(['流行', '新款', '精选'])
 
 const curType = ref('pop')
 const tabClick = (index) => {
-  console.log(index)
   if (index === 0) {
     curType.value = 'pop'
   } else if (index === 1) {
@@ -75,7 +73,6 @@ const tabClick = (index) => {
   } else if (index === 2) {
     curType.value = 'sell'
   }
-  console.log(curType.value)
   getHomeGoodsDataList(curType.value)
 }
 
@@ -97,7 +94,6 @@ async function getHomeGoodsDataList (type) {
 }
 
 const scroll = (count) => {
-  console.log(count)
   goods.value[curType.value].page = count
   getHomeGoodsDataList(curType.value)
 }

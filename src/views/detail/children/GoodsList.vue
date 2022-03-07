@@ -25,7 +25,6 @@ const count = ref(1)
 const emit = defineEmits(['scroll', 'itemclick'])
 const load = () => {
   count.value += 1
-  console.log(count.value)
   emit('scroll', count.value)
 }
 defineExpose({ count })
@@ -35,7 +34,6 @@ defineProps({
 })
 const router = useRouter()
 const goodItemClick = (item) => {
-  console.log(item)
   router.push(`/detail/${item.item_id}`)
   const id = (item.item_id)
   // defineExpose({ id })

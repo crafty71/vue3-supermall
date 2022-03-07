@@ -1,6 +1,6 @@
 <template>
   <div class="tabBarItem" @click="tabBarItemClick(link)">
-    <div v-if="!route.path.indexOf(link) !== -1">
+    <div v-if="route.path.indexOf(link) === -1">
       <slot name="item-icon"></slot>
     </div>
     <div v-else>

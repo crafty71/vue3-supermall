@@ -1,34 +1,24 @@
 <template>
   <div class="profile-list">
     <div class="profile-list-item">
-      <el-icon :size="size" :color="color">
-        <edit></edit>
-      </el-icon>
+      <el-icon><message /></el-icon>
       <span>我的消息</span>
     </div>
     <div class="profile-list-item">
-      <el-icon :size="size" :color="color">
-        <edit></edit>
-      </el-icon>
+      <el-icon><coin /></el-icon>
       <span>积分商城</span>
     </div>
     <div class="profile-list-item">
-      <el-icon :size="size" :color="color">
-        <edit></edit>
-      </el-icon>
+      <el-icon><user /></el-icon>
       <span style="border-bottom: 0">会员卡</span>
     </div>
     <div class="line"></div>
     <div class="profile-list-item">
-      <el-icon :size="size" :color="color">
-        <edit></edit>
-      </el-icon>
+      <el-icon><shopping-cart /></el-icon>
       <span>我的购物车</span>
     </div>
     <div class="profile-list-item">
-      <el-icon :size="size" :color="color">
-        <edit></edit>
-      </el-icon>
+      <el-icon><bell-filled /></el-icon>
       <span>点赞购物APP</span>
     </div>
   </div>
@@ -36,7 +26,7 @@
 
 <script></script>
 
-<style scoped>
+<style scoped lang="less">
 .profile-list {
   width: 100%;
 }
@@ -48,6 +38,9 @@
   height: 45px;
   padding-left: 20px;
   border-bottom: 1px solid #dddddd;
+  span {
+    margin-left: 10px;
+  }
 }
 
 .profile-list-item .profile-list-icon {

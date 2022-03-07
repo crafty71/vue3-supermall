@@ -17,7 +17,7 @@
         class="detail-set-scroll"
         @itemclick="itemclick"
       />
-      <DetailBottomBar @addCrat = "addCrat"/>
+      <DetailBottomBar @addCrat="addCrat" />
     </div>
   </div>
   <el-backtop :bottom="100">
@@ -49,6 +49,7 @@ import DetailCommentInfo from './children/DetailCommentInfo'
 import GoodsList from './children/GoodsList.vue'
 import Loading from '@/components/Loading/index.vue'
 import DetailBottomBar from './children/DetailBottomBar.vue'
+import { ElMessage } from 'element-plus'
 
 // api
 import {
@@ -78,16 +79,13 @@ const store = useStore()
 async function getProductDetailData (id) {
   const res = await getProductDetail(id.value)
   const data = res.result
-  console.log(data)
   // 获取轮播图数据
   topImages.value = data.itemInfo.topImages
 
   // 获取商品数据,调用封装的ES6的class
   goods.value = new Goods(data.itemInfo, data.columns, data.shopInfo.services)
-  console.log(new Goods(data.itemInfo, data.columns, data.shopInfo.services))
   // 获取店铺数据
   shops.value = new Shop(data.shopInfo)
-  console.log(new Shop(data.shopInfo))
 
   // 获取下面的图片展示数据
   detailsInfo.value = data.detailInfo
@@ -108,21 +106,17 @@ async function getProductDetailData (id) {
 const recommendList = ref()
 async function getRecommendData () {
   const res = await getRecommend()
-  console.log(res.data.list)
   recommendList.value = res.data.list
 }
 
 const itemclick = (id) => {
-  console.log(id)
   const iid = ref(id)
   getProductDetailData(iid)
 }
 
-const addCrat = (aaa) => {
-  console.log(aaa)
+const addCrat = () => {
   // 获取购物车需要展示的信息，对象的形式
   const product = {}
-  console.log(goods.value)
   product.image = topImages.value[0]
   product.title = goods.value.title
   product.desc = goods.value.desc
@@ -130,8 +124,11 @@ const addCrat = (aaa) => {
   product.iid = id.value
   product.newPrice = goods.value.nowPrice
   // 将商品添加购物车里 vuex
-  store.dispatch('addCart', product).then(res => {
-    console.log(res)
+  store.dispatch('addCart', product).then(() => {
+    ElMessage({
+      type: 'success',
+      message: '商品已加入购物车'
+    })
   })
 }
 onMounted(() => {
@@ -139,7 +136,6 @@ onMounted(() => {
   getRecommendData()
   loading.value = false
   document.body.scrollTop = 0
-  console.log(store)
   store.commit('setTabBarShow', {
     bol: false
   })
